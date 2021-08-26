@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  follow_up: MyText
+  reach_out: MyText
+  send_thank_you: MyText
+  prep_interview: MyText
+  prep_cover_letter: MyText
+
+two:
+  follow_up: MyText
+  reach_out: MyText
+  send_thank_you: MyText
+  prep_interview: MyText
+  prep_cover_letter: MyText

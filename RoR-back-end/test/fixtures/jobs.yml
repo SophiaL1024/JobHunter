@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  url: MyString
+  deadline: 2021-08-25
+  note: MyText
+  status: 1
+  applied_date: 2021-08-25
+
+two:
+  title: MyString
+  url: MyString
+  deadline: 2021-08-25
+  note: MyText
+  status: 1
+  applied_date: 2021-08-25
