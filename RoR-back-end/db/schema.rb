@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_26_004126) do
+ActiveRecord::Schema.define(version: 2021_09_02_041040) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,9 +38,8 @@ ActiveRecord::Schema.define(version: 2021_08_26_004126) do
   end
 
   create_table "interviews", force: :cascade do |t|
-    t.integer "round"
-    t.string "interviewer"
-    t.string "interviewer_email"
+    t.string "interviewer", default: [], array: true
+    t.string "interviewer_email", default: [], array: true
     t.date "date"
     t.text "note"
     t.datetime "created_at", precision: 6, null: false
@@ -60,8 +59,18 @@ ActiveRecord::Schema.define(version: 2021_08_26_004126) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "company_id", null: false
     t.bigint "user_id", null: false
+    t.bigint "status_id", null: false
     t.index ["company_id"], name: "index_jobs_on_company_id"
+    t.index ["status_id"], name: "index_jobs_on_status_id"
     t.index ["user_id"], name: "index_jobs_on_user_id"
+  end
+
+  create_table "statuses", force: :cascade do |t|
+    t.string "status"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_statuses_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -77,5 +86,7 @@ ActiveRecord::Schema.define(version: 2021_08_26_004126) do
   add_foreign_key "companies", "users"
   add_foreign_key "interviews", "jobs"
   add_foreign_key "jobs", "companies"
+  add_foreign_key "jobs", "statuses"
   add_foreign_key "jobs", "users"
+  add_foreign_key "statuses", "users"
 end
